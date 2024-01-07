@@ -120,28 +120,28 @@ class Game:
     active_meteors = filter(lambda x: (x.active == True), self.meteors)
     self.meteors = list(active_meteors)
 
+    # print("meteor list size: " + str(len(self.meteors)))
+
     
 
   def render(self):
     for meteor in self.meteors:
-      if meteor.active == True:
-        texture = ResourceType(meteor.type)
-        pr.draw_texture_pro(
-          self.resources[texture],
-          pr.Rectangle(
-            0, 0, self.resources[texture].width, self.resources[texture].height
-          ),
-          pr.Rectangle(
-            meteor.position.x, meteor.position.y, self.resources[texture].width, self.resources[texture].height
-          ),
-          pr.Vector2(self.resources[texture].width // 2, self.resources[texture].height // 2),
-          meteor.heading,
-          pr.WHITE
-        )
+      texture = ResourceType(meteor.type)
+      pr.draw_texture_pro(
+        self.resources[texture],
+        pr.Rectangle(
+          0, 0, self.resources[texture].width, self.resources[texture].height
+        ),
+        pr.Rectangle(
+          meteor.position.x, meteor.position.y, self.resources[texture].width, self.resources[texture].height
+        ),
+        pr.Vector2(self.resources[texture].width // 2, self.resources[texture].height // 2),
+        meteor.heading,
+        pr.WHITE
+      )
 
     for shot in self.shots:
-      if shot.active == True:
-        pr.draw_circle(int(shot.position.x), int(shot.position.y), 1.0, pr.YELLOW)
+      pr.draw_circle(int(shot.position.x), int(shot.position.y), 1.0, pr.YELLOW)
 
     pr.draw_texture_pro(
       self.resources[ResourceType.TEXTURE_PLAYER],
