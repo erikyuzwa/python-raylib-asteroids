@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import pyray as pr
 from resource_type import ResourceType
 from entity import Entity
